@@ -8,7 +8,7 @@ const useGetBoards = () => {
     const getBoards = async () => {
         setLoading(true);
         try {
-            const res = await apiClient('/api/v1/boards/get-boards')
+            const res = await apiClient('api/v1/boards/get-boards')
 
             const data = await res.json();
 
