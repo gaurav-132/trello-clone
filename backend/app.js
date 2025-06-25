@@ -9,22 +9,6 @@ dotenv.config()
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = [
-  'https://trello-clone-aoa9-ms9iogjz0-gaurav-132s-projects.vercel.app',
-  'https://trello-clone-9vs3.vercel.app',
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}));
 
 app.options('*', cors());
 
