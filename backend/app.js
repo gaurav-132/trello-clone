@@ -8,7 +8,11 @@ dotenv.config()
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: 'https://trello-clone-aoa9-ms9iogjz0-gaurav-132s-projects.vercel.app',
+  credentials: true
+}));
+
 
 app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
 
