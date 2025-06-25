@@ -7,10 +7,11 @@ import { taskRoutes } from './src/routes/task.routes.js';
 dotenv.config()
 
 const app = express();
+app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 
 
-app.options('*', cors());
 
 
 app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
@@ -18,6 +19,10 @@ app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
 
 loadAll(app);
 
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({ error: 'Internal Server Error' });
+});
 
 connectDb().then(() => {
     app.listen(process.env.PORT, () => {
